@@ -4,6 +4,8 @@ const path = require('path');
 const session = require('express-session');
 const bodyParser = require('body-parser');
 const rutas = require('./routes/index');
+require('dotenv').config(); 
+
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
