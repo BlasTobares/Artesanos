@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h2 Iniciar Sesión
+  form(action="/login", method="POST")
+    input(type="email", name="email", placeholder="Email", required)
+    input(type="password", name="contraseña", placeholder="Contraseña", required)
+    button(type="submit") Entrar

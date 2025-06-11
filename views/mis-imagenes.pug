@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h2.text-center.mb-4 Mis imágenes
+
+  if imagenes.length
+    .row
+      each img in imagenes
+        .col-md-4.mb-4
+          .card.shadow
+            img.card-img-top.img-estandar(src="/uploads/" + img.url_imagen, alt=img.titulo)
+            .card-body
+              h5.card-title= img.titulo
+              if img.descripcion
+                p.card-text= img.descripcion
+  else
+    p.text-center No subiste imágenes aún.

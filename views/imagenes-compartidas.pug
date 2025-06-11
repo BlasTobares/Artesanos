@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  h2.text-center.mb-4 Imágenes que te compartieron tus contactos
+
+  if imagenes.length
+    .row
+      each img in imagenes
+        .col-md-4.mb-4
+          .card.shadow
+            img.card-img-top.img-estandar(src="/uploads/" + img.url_imagen, alt=img.titulo)
+            .card-body
+              h5.card-title= img.titulo
+              p.text-muted.mb-2 Compartido por #{img.nombre} #{img.apellido}
+              if img.descripcion
+                p.card-text= img.descripcion
+
+              h6.mt-3.mb-1 Comentarios
+              if comentarios.length
+                each c in comentarios
+                  if c.id_imagen == img.id_imagen
+                    p.mb-1
+                      small.text-muted
+                        | #{c.nombre} #{c.apellido}:
+                      |  #{c.contenido}
+              else
+                p.text-muted No hay comentarios aún.
+
+              form(action="/comentar", method="POST")
+                input(type="hidden", name="id_imagen", value=img.id_imagen)
+                textarea.form-control(name="contenido", placeholder="Escribí un comentario", required)
+                button.btn.btn-sm.btn-primary.mt-2(type="submit") Comentar
+  else
+    p.text-center No tenés imágenes compartidas por tus contactos.
+
+  a(href="/") Volver al inicio

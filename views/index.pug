@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h2.text-center Bienvenido a Artesanos.com
+
+  // Imagen representativa
+  img.img-fluid.rounded.shadow.mb-4(
+    src="https://artesaniasdecolombia.com.co/document/recursos2024/banner15mayo2024_2.jpg",
+    alt="Imagen de artesanos"
+  )
+
+  if usuario
+    h4.text-center Hola #{usuario.nombre} 👋
+  else
+    p.text-center Iniciá sesión o registrate para comenzar a compartir tus creaciones.

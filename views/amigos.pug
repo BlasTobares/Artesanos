@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h2.text-center.mb-4 Tus amigos
+
+  if amigos.length
+    .row
+      each a in amigos
+        .col-md-4.mb-4
+          .card.shadow
+            .card-body
+              h5.card-title #{a.nombre} #{a.apellido}
+              p.text-muted #{a.email}
+  else
+    p.text-center Aún no tenés amigos.

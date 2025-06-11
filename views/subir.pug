@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h2.text-center.mb-4 Subí una nueva imagen
+
+  .row.justify-content-center
+    .col-md-6
+      .card.shadow
+        .card-body
+          form(action="/subir", method="POST", enctype="multipart/form-data")
+            .mb-3
+              label.form-label Título
+              input.form-control(type="text", name="titulo", placeholder="Ej: Jarrón de barro", required)
+            .mb-3
+              label.form-label Descripción
+              textarea.form-control(name="descripcion", placeholder="Detalle o técnica del trabajo", rows="3")
+            .mb-3
+              label.form-label Imagen
+              input.form-control(type="file", name="imagen", required)
+            button.btn.btn-primary(type="submit") Subir imagen
+  br
+  a(href="/") Volver al inicio

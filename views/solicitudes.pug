@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h2.text-center.mb-4 Solicitudes de amistad recibidas
+
+  if solicitudes.length
+    .row
+      each s in solicitudes
+        .col-md-4.mb-4
+          .card.shadow
+            .card-body
+              h5.card-title #{s.nombre} #{s.apellido}
+              form(action=`/solicitud/${s.id_amigo}/responder`, method='POST')
+                input(type='hidden', name='respuesta', value='aceptado')
+                button.btn.btn-success.btn-sm.me-2(type='submit') Aceptar
+              form(action=`/solicitud/${s.id_amigo}/responder`, method='POST')
+                input(type='hidden', name='respuesta', value='rechazado')
+                button.btn.btn-danger.btn-sm(type='submit') Rechazar
+  else
+    p.text-center No tenés solicitudes pendientes.
+
+  a(href='/') Volver al inicio

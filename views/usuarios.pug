@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h2.text-center.mb-4 Usuarios disponibles para conectar
+
+  if usuarios.length
+    .row
+      each u in usuarios
+        .col-md-4.mb-4
+          .card.shadow
+            .card-body
+              h5.card-title #{u.nombre} #{u.apellido}
+              p.text-muted #{u.email}
+              form(action='/solicitud', method='POST')
+                input(type='hidden', name='id_receptor', value=u.id_usuario)
+                button.btn.btn-primary(type='submit') Enviar solicitud
+  else
+    p.text-center Ya enviaste solicitudes a todos los usuarios disponibles.
